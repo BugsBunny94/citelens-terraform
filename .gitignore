@@ -1,0 +1,7 @@
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+myserver.key
+gcp-api-key.json
+citelens_com.crt
+.terraform.lock.hcl
