@@ -45,7 +45,7 @@ resource "google_cloud_run_service_iam_member" "citelens_email_job_cloud_run_inv
 
 resource "google_cloud_scheduler_job" "citelens_email_job_trigger" {
   name     = "citelens-email-job-trigger"
-  schedule = "*/5 * * * *" 
+  schedule = "10 9 * * *" 
 
   http_target {
     http_method = "POST"

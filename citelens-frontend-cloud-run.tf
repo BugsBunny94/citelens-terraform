@@ -1,5 +1,5 @@
 variable "redeploy_citelens_frontend_cloud_run" {
-  default = false
+  default = true
 }
 
 resource "google_cloud_run_service" "citelens_frontend_cloud_run" {
