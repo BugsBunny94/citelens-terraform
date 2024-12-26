@@ -14,7 +14,7 @@ resource "google_cloud_run_service" "citelens_frontend_cloud_run" {
     }    
     spec {
       containers {
-        image = "${local.region}-docker.pkg.dev/${local.project_id}/${google_artifact_registry_repository.my_repository.name}/citelens-frontend-1.1.2" 
+        image = "${local.region}-docker.pkg.dev/${local.project_id}/${google_artifact_registry_repository.my_repository.name}/citelens-frontend" 
         resources {
           limits = {
             memory = "512Mi"

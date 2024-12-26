@@ -1,6 +1,7 @@
 locals {
   redeploy_citelens_backend_cloud_run = true
   count_citelens_backend_cloud_run = 1
+  citelens_backend_version = "0.0.4"
 }
 
 resource "google_cloud_run_service" "citelens_backend_cloud_run" {
@@ -16,7 +17,7 @@ resource "google_cloud_run_service" "citelens_backend_cloud_run" {
     }    
     spec {
       containers {
-        image = "${local.region}-docker.pkg.dev/${local.project_id}/${google_artifact_registry_repository.my_repository.name}/citelens-0.0.1" 
+        image = "${local.region}-docker.pkg.dev/${local.project_id}/${google_artifact_registry_repository.my_repository.name}/citelens-${local.citelens_backend_version}" 
         resources {
           limits = {
             memory = "512Mi"

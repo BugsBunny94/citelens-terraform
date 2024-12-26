@@ -16,7 +16,7 @@ resource "google_cloud_run_service" "citelens_email_job_cloud_run" {
     }    
     spec {
       containers {
-        image = "${local.region}-docker.pkg.dev/${local.project_id}/${google_artifact_registry_repository.my_repository.name}/citelensemailjob-0.0.1" 
+        image = "${local.region}-docker.pkg.dev/${local.project_id}/${google_artifact_registry_repository.my_repository.name}/citelensemailjob" 
         resources {
           limits = {
             memory = "512Mi"
@@ -24,7 +24,7 @@ resource "google_cloud_run_service" "citelens_email_job_cloud_run" {
           }
         }
       }
-      timeout_seconds = 300
+      timeout_seconds = 3600
     }
   }
 
@@ -48,8 +48,8 @@ resource "google_cloud_scheduler_job" "citelens_email_job_trigger" {
   schedule = "10 9 * * *" 
 
   http_target {
-    http_method = "POST"
-    uri         = google_cloud_run_service.citelens_email_job_cloud_run[0].status[0].url
+    http_method = "GET"
+    uri         = "${google_cloud_run_service.citelens_email_job_cloud_run[0].status[0].url}/job/run"
   }
   count = 1
 }
