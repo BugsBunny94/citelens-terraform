@@ -1,5 +1,4 @@
 locals {
-  redeploy_citelens_email_job_cloud_run = true
   count_citelens_email_job_cloud_run = 1
 }
 

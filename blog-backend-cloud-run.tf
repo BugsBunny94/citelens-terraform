@@ -1,5 +1,4 @@
 locals {
-  redeploy_blog_backend_cloud_run = true
   count_blog_backend_cloud_run = 1
 }
 

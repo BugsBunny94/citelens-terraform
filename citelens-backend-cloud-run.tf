@@ -1,5 +1,4 @@
 locals {
-  redeploy_citelens_backend_cloud_run = true
   count_citelens_backend_cloud_run = 1
   citelens_backend_version = "0.0.4"
 }

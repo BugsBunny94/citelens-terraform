@@ -1,7 +1,3 @@
-variable "redeploy_citelens_frontend_cloud_run" {
-  default = true
-}
-
 resource "google_cloud_run_service" "citelens_frontend_cloud_run" {
   name     = "citelens-frontend"
   location = local.region
@@ -9,7 +5,7 @@ resource "google_cloud_run_service" "citelens_frontend_cloud_run" {
   template {
     metadata {
       annotations = {
-        "force-redeploy" = var.redeploy_citelens_frontend_cloud_run ? timestamp() : 0 
+        "force-redeploy" = local.redeploy_citelens_frontend_cloud_run ? timestamp() : 0 
       }
     }    
     spec {
