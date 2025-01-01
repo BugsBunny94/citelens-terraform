@@ -12,6 +12,7 @@ resource "google_cloud_run_service" "citelens_backend_cloud_run" {
     metadata {
       annotations = {
         "force-redeploy" = local.redeploy_citelens_backend_cloud_run ? timestamp() : 0 
+        "autoscaling.knative.dev/minScale" = "1"
       }
     }    
     spec {
@@ -23,7 +24,7 @@ resource "google_cloud_run_service" "citelens_backend_cloud_run" {
             cpu    = "1"
           }
         }
-      }
+      }    
       timeout_seconds = 300
     }
   }
